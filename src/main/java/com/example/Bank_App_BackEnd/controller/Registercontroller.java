@@ -1,7 +1,9 @@
 package com.example.Bank_App_BackEnd.controller;
 
 
+import com.example.Bank_App_BackEnd.model.AccountDetails;
 import com.example.Bank_App_BackEnd.model.AuthUser;
+import com.example.Bank_App_BackEnd.repository.AccountRepository;
 import com.example.Bank_App_BackEnd.repository.AuthUserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,17 +18,17 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 @CrossOrigin("http://localhost:5173")
 public class Registercontroller {
-
+    private final AccountRepository accountRepository;
     private final AuthUserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
     @PostMapping("/register")
-    public ResponseEntity registerUser(@RequestBody AuthUser user){
+    public ResponseEntity registerUser(@RequestBody AccountDetails accountDetails){
         try {
-            if (userRepository.findByUsername(user.getUsername()).isPresent())
+            if (accountRepository.findByEmail(accountDetails.getEmail()).isPresent())
                 return ResponseEntity.status(HttpStatus.CONFLICT).body("Username already taken. Please try again");
-            user.setPassword(passwordEncoder.encode(user.getPassword()));
-            AuthUser save = userRepository.save(user);
+            accountDetails.setPassword(passwordEncoder.encode(accountDetails.getPassword()));
+            accountRepository.save(accountDetails);
             return ResponseEntity.ok(HttpStatus.CREATED);
         } catch (Exception e){
             return ResponseEntity.internalServerError().body(e.getMessage());
