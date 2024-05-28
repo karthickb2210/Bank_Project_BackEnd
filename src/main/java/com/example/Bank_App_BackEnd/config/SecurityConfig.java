@@ -35,7 +35,7 @@ public class SecurityConfig {
         corsConfiguration.setExposedHeaders(List.of("Authorization"));
         return httpSecurity
                 .csrf(csrf-> csrf.disable())
-                .authorizeHttpRequests(auth-> auth.requestMatchers("/register","/error").permitAll()
+                .authorizeHttpRequests(auth-> auth.requestMatchers("/register","/error","/validate").permitAll()
                         .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())
                 .formLogin(Customizer.withDefaults())
