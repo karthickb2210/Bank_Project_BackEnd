@@ -1,11 +1,13 @@
 package com.example.Bank_App_BackEnd.service;
 
-import com.example.Bank_App_BackEnd.model.AccountDetails;
-import com.example.Bank_App_BackEnd.model.AuthUser;
-import com.example.Bank_App_BackEnd.model.Cred;
+import com.example.Bank_App_BackEnd.model.*;
 import com.example.Bank_App_BackEnd.repository.AccountRepository;
+import com.example.Bank_App_BackEnd.repository.AmountInfoRepository;
 import com.example.Bank_App_BackEnd.repository.AuthUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.github.javafaker.Faker;
@@ -24,6 +26,9 @@ public class Loginservice {
     public Loginservice(PasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
     }
+
+    @Autowired
+    private AmountInfoRepository amountInfoRepository;
 
 //    private final Faker faker = new Faker();
 //
@@ -58,6 +63,27 @@ public class Loginservice {
         return ans;
     }
 
+    public String findCurrentUsername() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            String currentUserName = authentication.getName();
+            return currentUserName;
+        }
+        return "";
+    }
+
+    public UserInfo findDetails(UserInfo user){
+        Optional<AccountDetails> acc = accountRepository.findByEmail(findCurrentUsername());
+        System.out.println(acc.isPresent());
+        String accnumber = "";
+        if(acc.isPresent()) {
+            user.setName(acc.get().getFirstName());
+            accnumber = acc.get().getAccountNumber();
+        }
+        Optional<AmountInfo> balance = amountInfoRepository.findByAccountNumber(accnumber);
+        user.setBalance(balance.get().getBalance());
+        return user;
+    }
 
 
 }
