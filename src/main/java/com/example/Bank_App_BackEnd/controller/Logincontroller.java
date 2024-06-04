@@ -3,7 +3,6 @@ package com.example.Bank_App_BackEnd.controller;
 import com.example.Bank_App_BackEnd.model.Cred;
 import com.example.Bank_App_BackEnd.service.Loginservice;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

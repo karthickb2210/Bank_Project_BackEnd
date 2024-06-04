@@ -22,7 +22,7 @@ public String findCurrentUsername() {
 
     @GetMapping("/user")
     public String greet(){
-        String name ="";
+    String name ="";
     try{
         name = findCurrentUsername();
         return name;
