@@ -21,8 +21,6 @@ public class Testcontroller  {
     @Autowired
     private Loginservice loginservice;
 
-
-
     @GetMapping("/user")
     public UserInfo greet(){
         UserInfo user = new UserInfo();

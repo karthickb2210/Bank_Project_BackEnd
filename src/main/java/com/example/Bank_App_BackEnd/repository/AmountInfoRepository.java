@@ -5,6 +5,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Optional;
 
-public interface AmountInfoRepository extends MongoRepository<AmountInfo,String> {
-    Optional<AmountInfo> findByAccountNumber(String accountNumber);
+public interface AmountInfoRepository extends MongoRepository<AmountInfo,Long> {
+    Optional<AmountInfo> findByAccountNumber(long accountNumber);
 }

@@ -74,8 +74,7 @@ public class Loginservice {
 
     public UserInfo findDetails(UserInfo user){
         Optional<AccountDetails> acc = accountRepository.findByEmail(findCurrentUsername());
-        System.out.println(acc.isPresent());
-        String accnumber = "";
+        long accnumber = 0;
         if(acc.isPresent()) {
             user.setName(acc.get().getFirstName());
             accnumber = acc.get().getAccountNumber();

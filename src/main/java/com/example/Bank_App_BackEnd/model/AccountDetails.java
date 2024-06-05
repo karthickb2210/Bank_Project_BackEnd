@@ -16,7 +16,7 @@ public class AccountDetails {
     private String lastName;
     private String pan;
     @Indexed
-    private String accountNumber;
+    private long accountNumber;
     private String email;
     private String mobile;
     private String dob;

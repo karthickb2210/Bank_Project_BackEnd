@@ -32,7 +32,7 @@ public class Registercontroller {
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody AccountDetails accountDetails){
             try {
-                    String random = getRandom();
+                    long random = getRandom();
                     accountDetails.setUserId(accountDetails.getDob());
                     accountDetails.setAccountNumber(random);
                     accountRepository.save(accountDetails);
@@ -43,9 +43,9 @@ public class Registercontroller {
                 return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body("Error");
             }
     }
-    public String getRandom(){
-        int temp =(int) (Math.random()*100000000);
-        return String.valueOf(temp);
+    public long getRandom(){
+
+        return (long) (Math.random()*100000000);
     }
 
     @PostMapping("/registerUser")

@@ -7,9 +7,14 @@ import org.springframework.data.mongodb.core.index.Indexed;
 
 @Data
 @AllArgsConstructor
-public class AmountInfo {
+public class Transaction {
     @Id
     @Indexed
-    private long accountNumber;
-    private int balance;
+    private Long transactionId;
+    private Long fromAccNumber;
+    private Long toAccNumber;
+    private String fromName;
+    private String toName;
+    private int amount;
+    private boolean done;
 }
