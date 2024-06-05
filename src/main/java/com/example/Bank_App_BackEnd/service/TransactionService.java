@@ -1,6 +1,6 @@
 package com.example.Bank_App_BackEnd.service;
 
-import com.example.Bank_App_BackEnd.model.AccountDetails;
+
 import com.example.Bank_App_BackEnd.model.AmountInfo;
 import com.example.Bank_App_BackEnd.model.Transaction;
 import com.example.Bank_App_BackEnd.repository.AccountRepository;
@@ -19,6 +19,7 @@ public class TransactionService{
 
     @Autowired
     private Loginservice loginservice;
+
     @Autowired
     private AccountRepository accountRepository;
 
@@ -35,8 +36,6 @@ public class TransactionService{
             return false;
         }else{
             AmountInfo amountInfo = new AmountInfo(fromUser.get().getAccountNumber(),fromUser.get().getBalance()-amount);
-            System.out.println(amountInfo.getAccountNumber());
-            System.out.println(amountInfo.getBalance());
             amountInfoRepository.save(amountInfo);
         }
         Optional<AmountInfo> toUser = amountInfoRepository.findByAccountNumber(transaction.getToAccNumber());
