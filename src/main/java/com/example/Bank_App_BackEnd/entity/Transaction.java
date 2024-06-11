@@ -1,4 +1,4 @@
-package com.example.Bank_App_BackEnd.model;
+package com.example.Bank_App_BackEnd.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,8 +9,8 @@ import org.springframework.data.mongodb.core.index.Indexed;
 @AllArgsConstructor
 public class Transaction {
     @Id
-    @Indexed
     private Long transactionId;
+    @Indexed
     private Long fromAccNumber;
     private Long toAccNumber;
     private String fromName;

@@ -1,4 +1,4 @@
-package com.example.Bank_App_BackEnd.model;
+package com.example.Bank_App_BackEnd.entity;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class AccountDetails {
     @Id
     private String userId;

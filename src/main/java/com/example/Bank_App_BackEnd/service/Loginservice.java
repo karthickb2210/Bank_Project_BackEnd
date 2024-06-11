@@ -1,5 +1,8 @@
 package com.example.Bank_App_BackEnd.service;
 
+import com.example.Bank_App_BackEnd.entity.AccountDetails;
+import com.example.Bank_App_BackEnd.entity.AmountInfo;
+import com.example.Bank_App_BackEnd.entity.AuthUser;
 import com.example.Bank_App_BackEnd.model.*;
 import com.example.Bank_App_BackEnd.repository.AccountRepository;
 import com.example.Bank_App_BackEnd.repository.AmountInfoRepository;
@@ -10,10 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import com.github.javafaker.Faker;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 @Service
 public class Loginservice {

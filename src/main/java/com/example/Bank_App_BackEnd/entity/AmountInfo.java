@@ -1,4 +1,4 @@
-package com.example.Bank_App_BackEnd.model;
+package com.example.Bank_App_BackEnd.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

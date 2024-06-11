@@ -1,7 +1,7 @@
 package com.example.Bank_App_BackEnd.service;
 
 
-import com.example.Bank_App_BackEnd.model.AuthUser;
+import com.example.Bank_App_BackEnd.entity.AuthUser;
 import com.example.Bank_App_BackEnd.repository.AuthUserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.User;

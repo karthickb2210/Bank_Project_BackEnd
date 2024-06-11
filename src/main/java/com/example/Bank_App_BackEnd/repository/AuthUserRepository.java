@@ -1,7 +1,7 @@
 package com.example.Bank_App_BackEnd.repository;
 
 
-import com.example.Bank_App_BackEnd.model.AuthUser;
+import com.example.Bank_App_BackEnd.entity.AuthUser;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
