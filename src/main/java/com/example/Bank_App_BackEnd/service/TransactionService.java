@@ -44,8 +44,6 @@ public class TransactionService{
         Optional<AmountInfo> toUser = amountInfoRepository.findByAccountNumber(transaction.getToAccNumber());
         if (toUser.isPresent()) {
             AmountInfo amountInfo = new AmountInfo(toUser.get().getAccountNumber(),toUser.get().getBalance()+amount);
-           // System.out.println(amountInfo.getAccountNumber());
-            // System.out.println(amountInfo.getBalance());
             amountInfoRepository.save(amountInfo);
         }
     }
